@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import app_config from "../config";
 import io from "socket.io-client";
 import ManageRooms from "./managerooms";
+import ChatMsg from '@mui-treasury/components/chatMsg/ChatMsg';
 
 const api_url = app_config.api_url;
 
@@ -60,9 +61,16 @@ const Chat = () => {
             <ul className="list-group">
             {messageList.map((messageobj, index) => {
               return (
-                <li key={index} className="list-group-item">{messageobj.message}</li>   
+                
+                <ChatMsg key={index}
+      avatar={''}
+      messages={[ messageobj.message
+        
+      ]}
+    />
               )
           } )}
+
             </ul>
             </div>
             <div className="input-group">

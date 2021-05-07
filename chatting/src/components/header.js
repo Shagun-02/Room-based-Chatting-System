@@ -44,6 +44,12 @@ const Header = () => {
                     <Button color="inherit">Register</Button>
                 </Link>
 
+                <Link to="/chat" className={classes.link}>
+                    <Button color="inherit">Chat</Button>
+                </Link>
+
+                
+
             </Toolbar>
         </AppBar>
     )

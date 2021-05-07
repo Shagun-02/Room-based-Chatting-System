@@ -6,12 +6,27 @@ import Chat from "./components/chat";
 import ManageRooms from "./components/managerooms";
 import { ThemeProvider } from "@livechat/ui-kit";
 import Header from "./components/header";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 function App() {
   return (
     <div>
       <ThemeProvider>
-        <Chat></Chat>
-        <Header></Header>
+      <Router>
+          
+          <Header></Header>
+
+          <Route path ="/chat">
+             <Chat/>
+          </Route>
+         <Route path="/login">
+           <Login/>
+         </Route>
+
+         <Route path= "/register">
+           <Register/>
+         </Route>
+      </Router>
+        
         
       </ThemeProvider>
     </div>
