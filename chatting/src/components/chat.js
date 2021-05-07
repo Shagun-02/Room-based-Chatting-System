@@ -21,6 +21,7 @@ const Chat = () => {
 
     socket.on('rcvmsg', data => {
         console.log(data);
+        console.log(messageList);
         setMessageList([...messageList, data]);
         console.log(messageList);
     });
@@ -38,7 +39,7 @@ const Chat = () => {
     setMessage(e.target.value);
   }
   const recieveMsg = () => {
-      new Promise( obj => {
+      return new Promise( obj => {
           socket.on('rcvmsg', data => {
               return data;
           })

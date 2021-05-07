@@ -19,18 +19,6 @@ const port = api_config.port; //specifying port
 const rooms = [];
 
 
-
-//handling request
-app.get('/home',(req,res) =>{
-    console.log('request accepted from home');
-    res.send("success");
-});
-
-app.get('/pokemon',(req,res) =>{
-    console.log('request accepted from pokemon');
-    res.send("which pokemon do you want");
-});
-
 io.on('connection', (socket) => {
     console.log('a user connected');
 
