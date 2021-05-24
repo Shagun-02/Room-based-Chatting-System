@@ -51,9 +51,9 @@ const Chat = () => {
   }
 
   return (
-    <div className="row" style={{ height: '100vh' }}>
+    <div className="row mt-5" >
       <div className="col-md-11 mx-auto">
-        <Card style={{ height: '50rem' }}>
+        <Card>
           <CardContent>
             <div className="row">
               <div className="col-md-4" style={{ borderRight: '1px solid grey', borderRight: '1px solid grey' }}>
@@ -62,15 +62,13 @@ const Chat = () => {
                 <ManageRooms socket={socket} selRoom={selRoom} setSelRoom={setSelRoom}></ManageRooms>
               </div>
               <div className="col-md-8">
-                <div className="chat-box" style={{ height: "20rem" }}>
+                <div className="chat-box" style={{ height: "53rem" }}>
                   <ul className="list-group">
                     {messageList.map((messageobj, index) => {
                       return (
-
                         <ChatMsg key={index}
                           avatar={''}
                           messages={[messageobj.message
-
                           ]}
                         />
                       )
