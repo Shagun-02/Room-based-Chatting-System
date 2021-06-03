@@ -1,5 +1,6 @@
 import { Button, Card, CardContent, TextField } from "@material-ui/core"
 import { useEffect, useState } from "react";
+import AddIcon from '@material-ui/icons/Add';
 
 const ManageRooms = (props) => {
 
@@ -25,7 +26,7 @@ const ManageRooms = (props) => {
     }
 
     const createRoom = () => {
-        socket.emit('createroom', {room_name : room});
+        socket.emit('createroom', { room_name: room });
     }
 
     const SelectRoom = (roomName) => {
@@ -35,22 +36,36 @@ const ManageRooms = (props) => {
 
     return (
         <div>
-            <Card className="col-md-6 mx-auto">
+            <Card className="col-md-12 mx-auto" >
                 <CardContent>
-                <TextField label="Room Name" variant="filled" onChange={handleChange}/>
-                <Button onClick={handleClick}>Add Room</Button>
-
-                <hr />
-
-                <ul className="list-group">
-                    {roomList.map((roomobj, index) => {
-                        return (
-                            <li key={index} className="list-group-item" onClick={e =>SelectRoom(roomobj.room_name) }>
-                                {roomobj.room_name}
-                            </li>
-                        )
-                    })}
-                </ul>
+                    <div style={{ height: '40rem' }}>
+                        <ul className="list-group">
+                            {roomList.map((roomobj, index) => {
+                                return (
+                                    <li key={index} className="list-group-item" onClick={e => SelectRoom(roomobj.room_name)}>
+                                        {roomobj.room_name}
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                    <hr />
+                    <div className="row">
+                        <div className="col-8">
+                            <TextField className="w-100" label="Room Name" variant="filled" onChange={handleChange} />
+                        </div>
+                        <div className="col-4">
+                            <Button
+                                size="large"
+                                variant="contained"
+                                color="default"
+                                onClick={handleClick}
+                                startIcon={<AddIcon />}
+                            >
+                                Add Room
+                      </Button>
+                        </div>
+                    </div>
                 </CardContent>
             </Card>
 

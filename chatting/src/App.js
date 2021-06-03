@@ -6,7 +6,7 @@ import Chat from "./components/chat";
 import ManageRooms from "./components/managerooms";
 import { ThemeProvider } from "@livechat/ui-kit";
 import Header from "./components/header";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 function App() {
   return (
     <div>
@@ -14,7 +14,7 @@ function App() {
       <Router>
           
           <Header></Header>
-
+          <Redirect to ="/login" exact  path="/"></Redirect>
           <Route path ="/chat">
              <Chat/>
           </Route>
