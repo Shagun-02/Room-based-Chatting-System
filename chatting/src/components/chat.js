@@ -3,6 +3,7 @@ import app_config from "../config";
 import io from "socket.io-client";
 import ManageRooms from "./managerooms";
 import ChatMsg from '@mui-treasury/components/chatMsg/ChatMsg';
+
 import { Card, CardContent, TextField } from "@material-ui/core";
 import {
   EmailSubscribe,
@@ -10,6 +11,8 @@ import {
   SubmitButton,
 } from '@mui-treasury/components/EmailSubscribe';
 import { useReadyEmailSubscribeStyles } from '@mui-treasury/styles/emailSubscribe/ready';
+
+
 
 const api_url = app_config.api_url;
 
@@ -70,7 +73,11 @@ const Chat = () => {
                 <ManageRooms socket={socket} selRoom={selRoom} setSelRoom={setSelRoom}></ManageRooms>
               </div>
               <div className="col-md-8">
+
                 <div className="chat-box" style={{ height: "45rem" }}>
+
+                <div className="chat-box" style={{ height: "53rem" }}>
+
                   <ul className="list-group">
                     {messageList.map((messageobj, index) => {
                       return (
@@ -84,7 +91,8 @@ const Chat = () => {
 
                   </ul>
                 </div>
-                
+                </div>
+
                 <div className="input-group">
                   <input className="form-control" placeholder="Enter message" value={message} onChange={handleChange} />
                   <div className="input-group-append">
@@ -93,7 +101,9 @@ const Chat = () => {
                 </div>
               </div>
             </div>
+            
           </CardContent>
+          
         </Card>
       </div>
     </div >

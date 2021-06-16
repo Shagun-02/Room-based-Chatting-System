@@ -9,25 +9,30 @@ import Header from "./components/header";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 function App() {
   return (
-    <div>
+    <div style={{ height: '100%' }}>
       <ThemeProvider>
-      <Router>
-          
+        <Router>
+
           <Header></Header>
           <Redirect to ="/login" exact  path="/"></Redirect>
           <Route path ="/chat">
              <Chat/>
           </Route>
-         <Route path="/login">
-           <Login/>
-         </Route>
 
-         <Route path= "/register">
-           <Register/>
-         </Route>
-      </Router>
-        
-        
+          <Route path="/chat">
+            <Chat />
+          </Route>
+          <Route path="/login">
+            <Login />
+
+          </Route>
+
+          <Route path="/register">
+            <Register />
+          </Route>
+        </Router>
+
+
       </ThemeProvider>
     </div>
   );

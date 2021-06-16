@@ -1,6 +1,8 @@
 import { Button, Card, CardContent, TextField } from "@material-ui/core"
 import { useEffect, useState } from "react";
 import AddIcon from '@material-ui/icons/Add';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
 
 const ManageRooms = (props) => {
 
@@ -38,7 +40,11 @@ const ManageRooms = (props) => {
         <div>
             <Card className="col-md-12 mx-auto" >
                 <CardContent>
+
                     <div style={{ height: '40rem' }}>
+
+                    <div style={{ height: '45rem' }}>
+
                         <ul className="list-group">
                             {roomList.map((roomobj, index) => {
                                 return (
@@ -48,6 +54,7 @@ const ManageRooms = (props) => {
                                 )
                             })}
                         </ul>
+                    </div>
                     </div>
                     <hr />
                     <div className="row">
@@ -63,12 +70,14 @@ const ManageRooms = (props) => {
                                 startIcon={<AddIcon />}
                             >
                                 Add Room
-                      </Button>
+                            </Button>
                         </div>
                     </div>
+                 
                 </CardContent>
+               
             </Card>
-
+    
         </div>
     )
 }
