@@ -1,7 +1,6 @@
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
-import { useContext } from "react";
 
 import app_config from '../config';
 import { Link } from "react-router-dom";
@@ -48,7 +47,7 @@ const Header = () => {
                     <Button color="inherit">Chat</Button>
                 </Link>
 
-                
+
 
             </Toolbar>
         </AppBar>

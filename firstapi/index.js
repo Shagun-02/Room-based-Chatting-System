@@ -27,6 +27,7 @@ io.on('connection', (socket) => {
   socket.on('sendmsg', data => {
     console.log(`message for room ${data.room}`);
     // socket.broadcast.emit('rcvmsg', data);
+    data.sent = false;
     socket.to(data.room).emit('rcvmsg', data);
   })
 

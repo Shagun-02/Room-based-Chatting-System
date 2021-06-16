@@ -4,13 +4,7 @@ import io from "socket.io-client";
 import ManageRooms from "./managerooms";
 import ChatMsg from '@mui-treasury/components/chatMsg/ChatMsg';
 
-import { Card, CardContent, TextField } from "@material-ui/core";
-import {
-  EmailSubscribe,
-  EmailTextInput,
-  SubmitButton,
-} from '@mui-treasury/components/EmailSubscribe';
-import { useReadyEmailSubscribeStyles } from '@mui-treasury/styles/emailSubscribe/ready';
+import { Card, CardContent, TextField, CardHeader } from "@material-ui/core";
 
 
 
@@ -41,7 +35,7 @@ const Chat = () => {
 
   const sendMessage = () => {
     console.log('message sent');
-    let obj = { message: message, room: selRoom }
+    let obj = { message: message, room: selRoom, sent: true }
     setMessageList([...messageList, obj]);
     socket.emit('sendmsg', obj);
   }
@@ -59,10 +53,10 @@ const Chat = () => {
     }).catch(err => console.error(err));
   }
 
-  
+
 
   return (
-    <div className="row mt-5" >
+    <div className="row mt-3" >
       <div className="col-md-11 mx-auto">
         <Card>
           <CardContent>
@@ -72,38 +66,48 @@ const Chat = () => {
                 <h3>Selected Room  : {selRoom}</h3>
                 <ManageRooms socket={socket} selRoom={selRoom} setSelRoom={setSelRoom}></ManageRooms>
               </div>
-              <div className="col-md-8">
+              <div className="col-md-8" >
+                <Card>
+                  <div style={{ padding: '1rem 2rem' }}>
 
-                <div className="chat-box" style={{ height: "45rem" }}>
+                    <h3>{selRoom}</h3>
 
-                <div className="chat-box" style={{ height: "53rem" }}>
-
-                  <ul className="list-group">
-                    {messageList.map((messageobj, index) => {
-                      return (
-                        <ChatMsg key={index}
-                          avatar={''}
-                          messages={[messageobj.message
-                          ]}
-                        />
-                      )
-                    })}
-
-                  </ul>
-                </div>
-                </div>
-
-                <div className="input-group">
-                  <input className="form-control" placeholder="Enter message" value={message} onChange={handleChange} />
-                  <div className="input-group-append">
-                    <button className="btn btn-primary" onClick={sendMessage}>Send</button>
                   </div>
-                </div>
+                  <hr />
+                  <CardContent>
+                    <div className="chat-box" style={{ height: "63vh", padding: '3rem' }}>
+                      <ul className="list-group">
+                        {messageList.map((messageobj, index) => {
+                          return (
+                            <ChatMsg key={index}
+                              side={messageobj.sent ? 'right' : 'left'}
+                              avatar={''}
+                              messages={[messageobj.message
+                              ]}
+                            />
+                          )
+                        })}
+
+                      </ul>
+
+                    </div>
+
+                    <div className="input-group" style={{ marginTop: 'auto' }}>
+                      <input className="form-control" placeholder="Enter message" value={message} onChange={handleChange} />
+                      <div className="input-group-append">
+                        <button className="btn btn-primary" onClick={sendMessage}>Send</button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+
+
               </div>
             </div>
-            
+
           </CardContent>
-          
+
         </Card>
       </div>
     </div >

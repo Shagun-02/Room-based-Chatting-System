@@ -32,6 +32,7 @@ const ManageRooms = (props) => {
     }
 
     const SelectRoom = (roomName) => {
+        console.log(props.selRoom);
         props.setSelRoom(roomName);
         socket.emit('joinroom', roomName);
     }
@@ -43,18 +44,18 @@ const ManageRooms = (props) => {
 
                     <div style={{ height: '40rem' }}>
 
-                    <div style={{ height: '45rem' }}>
+                        <div style={{ height: '45rem' }}>
 
-                        <ul className="list-group">
-                            {roomList.map((roomobj, index) => {
-                                return (
-                                    <li key={index} className="list-group-item" onClick={e => SelectRoom(roomobj.room_name)}>
-                                        {roomobj.room_name}
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
+                            <ul className="list-group">
+                                {roomList.map((roomobj, index) => {
+                                    return (
+                                        <li key={index} className="list-group-item" onClick={e => SelectRoom(roomobj.room_name)}>
+                                            {roomobj.room_name}
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
                     </div>
                     <hr />
                     <div className="row">
@@ -73,11 +74,11 @@ const ManageRooms = (props) => {
                             </Button>
                         </div>
                     </div>
-                 
+
                 </CardContent>
-               
+
             </Card>
-    
+
         </div>
     )
 }
